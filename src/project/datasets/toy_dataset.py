@@ -17,4 +17,4 @@ class ToyDataset(Dataset):
         return self.length
 
     def __getitem__(self, index):
-        return {"data": self.data[index], "label": self.label[index]}
+        return {"data": self.data[index], "label": self.label[index], "index": index}
