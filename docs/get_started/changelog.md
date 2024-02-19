@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.0 (2024-02-19)
+
+### Feat
+
+- **toy-model**: add toy model
+- **toy-dataset**: add toy dataset
+
 ## 1.0.0 (2024-02-19)
 
 ### Feat
