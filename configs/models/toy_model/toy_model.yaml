@@ -1,0 +1,2 @@
+model:
+  class_path: project.models.toy_model.ToyModel
