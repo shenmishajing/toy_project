@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.0 (2024-02-19)
+
+### Feat
+
+- **confusion-matrix**: add draw confusion matrix feature to toy model
+
 ## 1.1.1 (2024-02-19)
 
 ### Refactor
