@@ -1,0 +1,26 @@
+__base__: ../../metrics/classification.yaml
+
+data:
+  class_path: lightning_template.LightningDataModule
+  init_args:
+    dataset_cfg:
+      split_info:
+        split_format_to: [subset]
+        split_name_map:
+          val: valid
+          test: test
+          predict: test
+      fit:
+        class_path: project.datasets.toy_dataset.ToyDataset
+        init_args:
+          subset: ${split}
+      val:
+        - {}
+        - init_args:
+            subset: test
+    dataloader_cfg:
+      batch_size: 4
+      # num_workers: 8
+      # persistent_workers: true
+      prefetch_factor: null
+      pin_memory: true
