@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.0 (2024-02-19)
+
+### Feat
+
+- **project-name**: set the project name
+
 ## 0.2.3 (2024-02-19)
 
 ### Refactor
