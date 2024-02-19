@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.1 (2024-02-19)
+
+### Refactor
+
+- **readme**: update doc for steps to implement a new project based on project template
+
 ## 1.1.0 (2024-02-19)
 
 ### Feat
