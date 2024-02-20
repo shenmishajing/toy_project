@@ -6,9 +6,19 @@ This template project is based on [pytorch lightning](https://pytorch-lightning.
 
 ## Installation
 
+### Pick a name for your project
+
+Before you start, you should pick a name for your project. We will use `<project-name>` as the name of the project in the following sections. You should replace `<project-name>` with the name you pick.
+
 ### Python
 
-We recommend you use the latest version of Python, which works well generally and may provide a better performance. The minimum supported version of Python is `3.8`.
+We recommend you use the latest version of Python, which works well generally and may provide a better performance. The minimum supported version of Python is `3.8`. You can use the following command to create a conda environment with the specific version of Python.
+
+```bash
+conda create -n <env-name> python=<python-version>
+```
+
+We recommend you use your project name as the name of the conda environment and create an isolated environment for each of your projects. In addition, you can choose the version of Python based on the compatibility of the dependencies of your project. The minimum supported version of Python is `3.8`, however, we recommend you use the latest version of Python if you can, which may provide a better performance.
 
 ### Pytorch
 
@@ -23,10 +33,6 @@ pip install -e ".[all]"
 ```
 
 ## Setup
-
-### Pick a name for your project
-
-Before you start, you should pick a name for your project. We will use `<project-name>` as the name of the project in the following sections. You should replace `<project-name>` with the name you pick.
 
 ### Clone and republish to GitHub
 
