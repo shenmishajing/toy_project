@@ -44,7 +44,7 @@ git remote add origin https://github.com/<your-github-name>/<project-name>.git
 git push -u --tags origin main
 ```
 
-### Installation and dependecies
+### Installation and dependencies
 
 You can install your project in the same way as the description in the [Installation](#installation) section.
 
