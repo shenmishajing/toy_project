@@ -6,19 +6,13 @@ This template project is based on [pytorch lightning](https://pytorch-lightning.
 
 ## Installation
 
-### Pick a name for your project
-
-Before you start, you should pick a name for your project. We will use `<project-name>` as the name of the project in the following sections. You should replace `<project-name>` with the name you pick.
-
 ### Python
 
 We recommend you use the latest version of Python, which works well generally and may provide a better performance. The minimum supported version of Python is `3.8`. You can use the following command to create a conda environment with the specific version of Python.
 
 ```bash
-conda create -n <env-name> python=<python-version>
+conda create -n toy_project python=<python-version>
 ```
-
-We recommend you use your project name as the name of the conda environment and create an isolated environment for each of your projects. In addition, you can choose the version of Python based on the compatibility of the dependencies of your project. The minimum supported version of Python is `3.8`, however, we recommend you use the latest version of Python if you can, which may provide a better performance.
 
 ### Pytorch
 
@@ -32,7 +26,11 @@ Generally, you can just use the latest dependencies without a specific version, 
 pip install -e ".[all]"
 ```
 
-## Setup
+## Turitol for developing a new project based on [project template](https://github.com/shenmishajing/project_template)
+
+### Pick a name for your project
+
+Before you start, you should pick a name for your project. We will use `<project-name>` as the name of the project in the following sections. You should replace `<project-name>` with the name you pick.
 
 ### Clone and republish to GitHub
 
@@ -44,6 +42,16 @@ cd <project-name>
 git remote rename origin project_template
 git remote add origin https://github.com/<your-github-name>/<project-name>.git
 git push -u --tags origin main
+```
+
+### Installation and dependecies
+
+You can install your project in the same way as the description in the [Installation](#installation) section.
+
+If you have to add more dependencies, you can add them to the `project.dependencies` parameter in the `pyproject.toml` file and then use the following command to install them.
+
+```bash
+pip install -e ".[all]"
 ```
 
 ### Create a wandb academic team
