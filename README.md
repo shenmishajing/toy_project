@@ -80,3 +80,35 @@ Although requiring your commit message to follow the [conventional commit](https
 ## Development
 
 Refer to the [Usage doc](https://lightning-template.readthedocs.io/en/latest/get_started/usage.html#) of [lightning-template](https://github.com/shenmishajing/lightning_template) for more details about how to implement your models and datasets etc.
+
+## Experiment
+
+### Train the toy model
+
+You can use the following command to train the toy model.
+
+```bash
+CUDA_VISIBLE_DEVICES=<gpu_ids> cli fit --config configs/runs/toy_model/toy_model_toy_dataset_1x.yaml
+```
+
+### Predict with the toy model
+
+#### Without checkpoint
+
+You can use the following command to draw the confusion matrix with the toy model.
+
+```bash
+CUDA_VISIBLE_DEVICES=<gpu_ids> cli predict --config configs/runs/toy_model/toy_model_toy_dataset_1x.yaml
+```
+
+You can find the results in the `prediction` folder under your working directory.
+
+#### With checkpoint
+
+You can use the following command to draw the confusion matrix with the toy model and a specific checkpoint.
+
+```bash
+CUDA_VISIBLE_DEVICES=<gpu_ids> cli predict --config configs/runs/toy_model/toy_model_toy_dataset_1x.yaml --ckpt_path work_dirs/<run_name>/<run_id>/checkpoints/<checkpoint_name>.ckpt
+```
+
+You can find the results in the `prediction` folder under the parent directory of the checkpoint, specifically, the `prediction` folder under the `work_dirs/<run_name>/<run_id>` directory.
