@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.1 (2024-02-21)
+
+### Refactor
+
+- **default-runtime**: set entity to null
+
 ## 1.2.0 (2024-02-19)
 
 ### Feat
