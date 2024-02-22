@@ -20,6 +20,9 @@ trainer:
         save_best: true
         mode: min
         auto_insert_metric_name: false
+    # - class_path: lightning_template.utils.callbacks.set_rich_traceback_handler.SetRichTracebackHandlerCallback
+    #   init_args:
+    #     show_locals: true
     - class_path: lightning_template.utils.progress.rich_progress.RichProgressBar
       init_args:
         show_version: false
@@ -40,7 +43,7 @@ trainer:
     - class_path: lightning_template.utils.callbacks.custom_repr.CustomReprCallback
     - class_path: lightning.pytorch.callbacks.LearningRateMonitor
   # train len
-  max_epochs: -1
+  max_epochs: null
   min_epochs: null
   max_steps: -1
   min_steps: null
@@ -51,11 +54,13 @@ trainer:
   gradient_clip_val: null
   gradient_clip_algorithm: null
   # debug
-  limit_train_batches: 1.0
-  limit_val_batches: 1.0
-  limit_test_batches: 1.0
-  limit_predict_batches: 1.0
+  limit_train_batches: null
+  limit_val_batches: null
+  limit_test_batches: null
+  limit_predict_batches: null
   overfit_batches: 0.0
+  num_sanity_val_steps: null
+  barebones: false
   detect_anomaly: false
   # fast_dev_run: 5
   # profiler:
@@ -82,12 +87,16 @@ trainer:
   precision: 32
   sync_batchnorm: false
   accumulate_grad_batches: 1
+  use_distributed_sampler: true
+  deterministic: null
   benchmark: null
-  deterministic: false
+  inference_mode: true
   # val and log
   check_val_every_n_epoch: 1
-  val_check_interval: 1.0
-  log_every_n_steps: 50
+  val_check_interval: null
+  log_every_n_steps: null
+  # dataloader
+  reload_dataloaders_every_n_epochs: 0
 
 # seed
 seed_everything: true
