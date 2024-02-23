@@ -34,7 +34,49 @@ Generally, you can just use the latest dependencies without a specific version, 
 pip install -e ".[all]"
 ```
 
-## Turitol for developing a new project based on [project template](https://github.com/shenmishajing/project_template)
+## Experiments
+
+### Train the toy model
+
+You can use the following command to train the toy model.
+
+```bash
+CUDA_VISIBLE_DEVICES=<gpu_ids> cli fit --config configs/runs/toy_model/toy_model_toy_dataset_1x.yaml
+```
+
+### Evaluate the toy model
+
+You can use the following command to evaluate the toy model on validation or test datasets.
+
+```bash
+CUDA_VISIBLE_DEVICES=<gpu_ids> cli fit --config configs/runs/toy_model/toy_model_toy_dataset_1x.yaml --ckpt_path work_dirs/toy_model_toy_dataset_1x/<run_id>/checkpoints/<checkpoint_name>.ckpt
+```
+
+### Predict with the toy model
+
+#### Without checkpoint
+
+You can use the following command to draw the confusion matrix with the toy model.
+
+```bash
+CUDA_VISIBLE_DEVICES=<gpu_ids> cli predict --config configs/runs/toy_model/toy_model_toy_dataset_1x.yaml
+```
+
+You can find the results in the `prediction` folder under your working directory.
+
+#### With checkpoint
+
+You can use the following command to draw the confusion matrix with the toy model and a specific checkpoint.
+
+```bash
+CUDA_VISIBLE_DEVICES=<gpu_ids> cli predict --config configs/runs/toy_model/toy_model_toy_dataset_1x.yaml --ckpt_path work_dirs/toy_model_toy_dataset_1x/<run_id>/checkpoints/<checkpoint_name>.ckpt
+```
+
+You can find the results in the `prediction` folder under the parent directory of the checkpoint, specifically, the `prediction` folder under the `work_dirs/toy_model_toy_dataset_1x/<run_id>` directory.
+
+## A Turitol for developing a new project based on [project template](https://github.com/shenmishajing/project_template)
+
+After you have played with the toy project, you may want to develop a new project based on the [project template](https://github.com/shenmishajing/project_template). You can follow the following steps to do this.
 
 ### Pick a name for your project
 
@@ -87,7 +129,7 @@ You should see the first commits on your GitHub repository now.
 
 ### [Optional] Set up the pre-commit hooks
 
-The pre-commit hooks can check your code before you commit it, which will improve the quality of your code and commit message. However, if you are unfamiliar with them, you may need to spend some time dealing with problems brought by them. You can skip this step if you are not sure about it, but you can learn more about the pre-commit hooks and develop a good coding style if you work with them.
+We recommend you install the pre-commit hooks to improve the quality of your code and commit message. The pre-commit hooks can check your code before you commit it, which will ensure the styles of your code and commit message follow the rules you set. The pre-commit hooks can also fix some problems automatically, which will save you time. However, if you are unfamiliar with them, you may need to spend some time dealing with problems brought by them. You can skip this step if you are not sure about it, but we are sure that you can learn more about the pre-commit hooks and develop a good coding style if you work with them.
 
 We use [pre-commit](https://pre-commit.com/) to manage the pre-commit hooks. You can use the following command to install the pre-commit hooks.
 
@@ -105,12 +147,22 @@ Refer to the [Usage doc](https://lightning-template.readthedocs.io/en/latest/get
 
 ## Experiment
 
-### Train the toy model
+You can use similar commands as the toy project to train, evaluate and predict with your model.
 
-You can use the following command to train the toy model.
+### Train your model
+
+You can use the following command to train your model.
 
 ```bash
-CUDA_VISIBLE_DEVICES=<gpu_ids> cli fit --config configs/runs/toy_model/toy_model_toy_dataset_1x.yaml
+CUDA_VISIBLE_DEVICES=<gpu_ids> cli fit --config configs/runs/path/to/config.yaml
+```
+
+### Evaluate your model
+
+You can use the following command to evaluate your model on validation or test datasets.
+
+```bash
+CUDA_VISIBLE_DEVICES=<gpu_ids> cli fit --config configs/runs/path/to/config.yaml --ckpt_path work_dirs/<run_name>/<run_id>/checkpoints/<checkpoint_name>.ckpt
 ```
 
 ### Predict with the toy model
@@ -120,7 +172,7 @@ CUDA_VISIBLE_DEVICES=<gpu_ids> cli fit --config configs/runs/toy_model/toy_model
 You can use the following command to draw the confusion matrix with the toy model.
 
 ```bash
-CUDA_VISIBLE_DEVICES=<gpu_ids> cli predict --config configs/runs/toy_model/toy_model_toy_dataset_1x.yaml
+CUDA_VISIBLE_DEVICES=<gpu_ids> cli predict --config configs/runs/path/to/config.yaml
 ```
 
 You can find the results in the `prediction` folder under your working directory.
@@ -130,7 +182,7 @@ You can find the results in the `prediction` folder under your working directory
 You can use the following command to draw the confusion matrix with the toy model and a specific checkpoint.
 
 ```bash
-CUDA_VISIBLE_DEVICES=<gpu_ids> cli predict --config configs/runs/toy_model/toy_model_toy_dataset_1x.yaml --ckpt_path work_dirs/<run_name>/<run_id>/checkpoints/<checkpoint_name>.ckpt
+CUDA_VISIBLE_DEVICES=<gpu_ids> cli predict --config configs/runs/path/to/config.yaml --ckpt_path work_dirs/<run_name>/<run_id>/checkpoints/<checkpoint_name>.ckpt
 ```
 
 You can find the results in the `prediction` folder under the parent directory of the checkpoint, specifically, the `prediction` folder under the `work_dirs/<run_name>/<run_id>` directory.
