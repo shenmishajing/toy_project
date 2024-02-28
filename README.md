@@ -6,14 +6,6 @@ This template project is based on [pytorch lightning](https://pytorch-lightning.
 
 ## Installation
 
-We recommend you use `conda` to install this project and all required packages with the specific version to recurrent our experiments and results of them. The following commands can be used to install this project and all required packages.
-
-```bash
-conda env create -f requirements/conda.yml -n <env_name>
-conda activate <env_name>
-pip install -e .
-```
-
 ### Python
 
 We recommend you use the latest version of Python, which works well generally and may provide a better performance. The minimum supported version of Python is `3.8`. You can use the following command to create a conda environment with the specific version of Python.
