@@ -10,18 +10,26 @@ class ToyModel(LightningModule):
         if predict_tasks is None:
             predict_tasks = ["confusion_matrix"]
         super().__init__(*args, predict_tasks=predict_tasks, **kwargs)
-        self.fcs = nn.Sequential(
-            nn.Linear(dim, 512),
-            nn.ReLU(),
-            nn.Linear(512, 256),
-            nn.ReLU(),
-            nn.Linear(256, 1),
-            nn.Sigmoid(),
-        )
-        self.loss = nn.BCELoss()
+        self.dim = dim
 
-        if "confusion_matrix" in self.predict_tasks:
-            self.confusion_matrix = ConfusionMatrix(task="binary", num_classes=2)
+    def configure_model(self) -> None:
+        if self.model_not_configured:
+            # Define the model in configure_model method instead of __init__ method,
+            # which is required by advanced distributed training frameworks,
+            # such as deepspeed and fsdp
+            self.fcs = nn.Sequential(
+                nn.Linear(self.dim, 512),
+                nn.ReLU(),
+                nn.Linear(512, 256),
+                nn.ReLU(),
+                nn.Linear(256, 1),
+                nn.Sigmoid(),
+            )
+            self.loss = nn.BCELoss()
+
+            if "confusion_matrix" in self.predict_tasks:
+                self.confusion_matrix = ConfusionMatrix(task="binary", num_classes=2)
+            super().configure_model()
 
     def forward(self, batch, *args, **kwargs):
         preds = self.fcs(batch["data"]).squeeze()
