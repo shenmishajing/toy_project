@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.3.0 (2024-02-29)
+
+### Feat
+
+- **model**: define model in configure model method instead of init method
+
+### Refactor
+
+- **default_runtime**: update the config of trainer to the default parameters of trainer
+- **SetRichTracebackHandlerCallback**: add SetRichTracebackHandlerCallback config
+
 ## 1.2.1 (2024-02-21)
 
 ### Refactor
