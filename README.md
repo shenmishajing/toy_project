@@ -119,9 +119,9 @@ git push
 
 You should see the first commits on your GitHub repository now.
 
-### [Optional] Set up the pre-commit hooks
+### Set up the pre-commit hooks
 
-We recommend you install the pre-commit hooks to improve the quality of your code and commit message. The pre-commit hooks can check your code before you commit it, which will ensure the styles of your code and commit message follow the rules you set. The pre-commit hooks can also fix some problems automatically, which will save you time. However, if you are unfamiliar with them, you may need to spend some time dealing with problems brought by them. You can skip this step if you are not sure about it, but we are sure that you can learn more about the pre-commit hooks and develop a good coding style if you work with them.
+We recommend you install the pre-commit hooks to improve the quality of your code and commit message. The pre-commit hooks can check your code before you commit it, which will ensure the styles of your code and commit message follow the rules you set. The pre-commit hooks can also fix some problems automatically, which will save you time. However, if you are unfamiliar with them, you may need to spend some time dealing with problems brought by them.
 
 We use [pre-commit](https://pre-commit.com/) to manage the pre-commit hooks. You can use the following command to install the pre-commit hooks.
 
