@@ -2,7 +2,7 @@ name: toy_model_toy_dataset_1x
 method: bayes
 metric:
   goal: maximize
-  name: val/ROC-AUC_1
+  name: val/ROC_1
 program: cli
 parameters:
   model/init_args/hidden_dim:

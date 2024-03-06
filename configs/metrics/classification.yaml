@@ -5,7 +5,7 @@ model:
         class_path: torchmetrics.MetricCollection
         init_args:
           metrics:
-            PR-AUC:
+            AP:
               class_path: torchmetrics.AveragePrecision
               init_args:
                 task: binary
@@ -13,7 +13,7 @@ model:
               class_path: torchmetrics.F1Score
               init_args:
                 task: binary
-            ROC-AUC:
+            ROC:
               class_path: torchmetrics.AUROC
               init_args:
                 task: binary
@@ -34,6 +34,6 @@ trainer:
     change_item:
       - - 0
         - init_args:
-            monitor: val/ROC-AUC_1
-            filename: "epoch:{epoch}-val_f1_1:{val/F1_1:.4g}-val_pr_auc_1:{val/PR-AUC_1:.4g}-val_roc_auc_1:{val/ROC-AUC_1:.4g}.ckpt"
+            monitor: val/ROC_1
+            filename: "epoch:{epoch}-val_f1:{val/F1_1:.4g}-val_ap:{val/AP_1:.4g}-val_roc:{val/ROC_1:.4g}.ckpt"
             mode: max
