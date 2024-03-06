@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.4.0 (2024-03-06)
+
+### Feat
+
+- **sweep**: add sweep feature
+
+### Refactor
+
+- **model**: use small model
+- **dataset**: add tag for toy dataset
+
 ## 1.3.0 (2024-02-29)
 
 ### Feat
