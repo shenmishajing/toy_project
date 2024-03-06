@@ -41,7 +41,7 @@ Then you can use the following command to start the hyperparameter search.
 ```bash
 CUDA_VISIBLE_DEVICES=<gpu_ids> wandb agent <sweep_id>
 ```
-where the `<gpu_ids>` is the gpus you want to use and the `<sweep_id>` is the id of the sweep you have created in the previous step. The `<sweep_id>` is a string like `your-entity/your-project/your-sweep-id`.
+where the `<gpu_ids>` is the gpus you want to use and the `<sweep_id>` is the id of the sweep you have created in the previous step. The `<sweep_id>` is a string like `your-entity/your-project/your-sweep-id`. Refer to the [wandb doc](https://docs.wandb.ai/guides/sweeps/define-sweep-configuration) for more details about the hyperparameter search.
 
 ### Train the toy model
 
