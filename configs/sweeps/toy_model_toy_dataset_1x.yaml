@@ -1,0 +1,27 @@
+name: toy_model_toy_dataset_1x
+method: bayes
+metric:
+  goal: maximize
+  name: val/ROC-AUC_1
+program: cli
+parameters:
+  model/init_args/hidden_dim:
+    distribution: q_log_uniform_values
+    min: 4
+    max: 512
+  optimizer_config/optimizer/init_args/lr:
+    distribution: log_uniform_values
+    max: 1
+    min: 1e-05
+  optimizer_config/optimizer/init_args/weight_decay:
+    distribution: log_uniform_values
+    max: 1
+    min: 1e-05
+command:
+  - ${env}
+  - "cli"
+  - "fit"
+  - "--config"
+  - "configs/runs/toy_model/toy_model_toy_dataset_1x.yaml"
+  - "--json-file"
+  - ${args_json_file}

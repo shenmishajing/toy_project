@@ -28,6 +28,21 @@ pip install -e ".[all]"
 
 ## Experiments
 
+### Hyperparameter search
+
+We employ the wandb to search hyperparameters for the toy model. You can use the following command to init an wandb sweep first, where you can set the hyperparameters you want to search.
+
+```bash
+wandb sweep --project toy_project configs/sweeps/toy_model_toy_dataset_1x.yaml
+```
+
+Then you can use the following command to start the hyperparameter search.
+
+```bash
+CUDA_VISIBLE_DEVICES=<gpu_ids> wandb agent <sweep_id>
+```
+where the `<gpu_ids>` is the gpus you want to use and the `<sweep_id>` is the id of the sweep you have created in the previous step. The `<sweep_id>` is a string like `your-entity/your-project/your-sweep-id`.
+
 ### Train the toy model
 
 You can use the following command to train the toy model.
