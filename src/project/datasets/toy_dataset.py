@@ -5,7 +5,7 @@ from torch.utils.data import Dataset
 class ToyDataset(Dataset):
     SAMPLE_NUM = {"train": 1000, "valid": 200, "test": 100}
 
-    def __init__(self, subset, dim=1024) -> None:
+    def __init__(self, subset, dim=16) -> None:
         super().__init__()
         self.subset = subset
         self.dim = dim

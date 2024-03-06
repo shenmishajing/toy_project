@@ -6,11 +6,14 @@ from torchmetrics import ConfusionMatrix
 
 
 class ToyModel(LightningModule):
-    def __init__(self, dim=1024, *args, predict_tasks=None, **kwargs) -> None:
+    def __init__(
+        self, input_dim=16, hidden_dim=32, *args, predict_tasks=None, **kwargs
+    ) -> None:
         if predict_tasks is None:
             predict_tasks = ["confusion_matrix"]
         super().__init__(*args, predict_tasks=predict_tasks, **kwargs)
-        self.dim = dim
+        self.input_dim = input_dim
+        self.hidden_dim = hidden_dim
 
     def configure_model(self) -> None:
         if self.model_not_configured:
@@ -18,11 +21,9 @@ class ToyModel(LightningModule):
             # which is required by advanced distributed training frameworks,
             # such as deepspeed and fsdp
             self.fcs = nn.Sequential(
-                nn.Linear(self.dim, 512),
+                nn.Linear(self.input_dim, self.hidden_dim),
                 nn.ReLU(),
-                nn.Linear(512, 256),
-                nn.ReLU(),
-                nn.Linear(256, 1),
+                nn.Linear(self.hidden_dim, 1),
                 nn.Sigmoid(),
             )
             self.loss = nn.BCELoss()
