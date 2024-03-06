@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.1 (2024-03-06)
+
+### Refactor
+
+- **metric**: simplify the metric name
+
 ## 1.4.0 (2024-03-06)
 
 ### Feat
