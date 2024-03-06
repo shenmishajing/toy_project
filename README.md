@@ -41,7 +41,7 @@ Then you can use the following command to start the hyperparameter search.
 ```bash
 CUDA_VISIBLE_DEVICES=<gpu_ids> wandb agent <sweep_id>
 ```
-where the `<gpu_ids>` is the gpus you want to use and the `<sweep_id>` is the id of the sweep you have created in the previous step. The `<sweep_id>` is a string like `your-entity/your-project/your-sweep-id`. Refer to the [wandb doc](https://docs.wandb.ai/guides/sweeps/define-sweep-configuration) for more details about the hyperparameter search.
+where the `<gpu_ids>` is the gpus you want to use and the `<sweep_id>` is the id of the sweep you have created in the previous step. The `<sweep_id>` is a string like `your-entity/your-project/your-sweep-id`. Refer to the [wandb doc](https://docs.wandb.ai/guides/sweeps/define-sweep-configuration) for more details about the wandb sweep.
 
 ### Train the toy model
 
@@ -81,13 +81,19 @@ CUDA_VISIBLE_DEVICES=<gpu_ids> cli predict --config configs/runs/toy_model/toy_m
 
 You can find the results in the `prediction` folder under the parent directory of the checkpoint, specifically, the `prediction` folder under the `work_dirs/toy_model_toy_dataset_1x/<run_id>` directory.
 
-## A Turitol for developing a new project based on [project template](https://github.com/shenmishajing/project_template)
+## A Tutorial for developing a new project based on [project template](https://github.com/shenmishajing/project_template)
 
 After you have played with the toy project, you may want to develop a new project based on the [project template](https://github.com/shenmishajing/project_template). You can follow the following steps to do this.
 
 ### Pick a name for your project
 
 Before you start, you should pick a name for your project. We will use `<project-name>` as the name of the project in the following sections. You should replace `<project-name>` with the name you pick.
+
+### Create a wandb academic team
+
+We use [wandb](https://wandb.ai/) as the default logger. You have to create an account on their [site](https://wandb.ai/) and login following their [doc](https://docs.wandb.ai/quickstart). Then you can create a new academic team and invite your team members to join it.
+
+Note that you can only create one academic team for free, and you can not change the name of the team after you create it. So you should pick a good name for the team. You may not want to use the `<project-name>` as the name of the team, since you may want to use the team for multiple projects. We will use `<team-name>` as the name of the team in the following sections. You should replace `<team-name>` with the name you pick.
 
 ### Clone and republish to GitHub
 
@@ -105,17 +111,25 @@ git push -u --tags origin main
 
 You can install your project in the same way as the description in the [Installation](#installation) section.
 
-If you have to add more dependencies, you can add them to the `project.dependencies` parameter in the `pyproject.toml` file and then use the following command to install them.
+If you have to add more dependencies, you can add them to the `project.dependencies` parameter in the `pyproject.toml` file and then use the following command to install them and all pre-commit hooks.
 
 ```bash
 pip install -e ".[all]"
 ```
 
-### Create a wandb academic team
+### Set up the pre-commit hooks
 
-We use [wandb](https://wandb.ai/) as the default logger. You have to create an account on their [site](https://wandb.ai/) and login following their [doc](https://docs.wandb.ai/quickstart). Then you can create a new academic team and invite your team members to join it.
+We recommend you install the pre-commit hooks to improve the quality of your code and commit message. The pre-commit hooks can check your code before you commit it, which will ensure the styles of your code and commit message follow the rules you set. The pre-commit hooks can also fix some problems automatically, which will save you time. However, if you are unfamiliar with them, you may need to spend some time dealing with problems brought by them.
 
-Note that you can only create one academic team for free, and you can not change the name of the team after you create it. So you should pick a good name for the team. You may not want to use the `<project-name>` as the name of the team, since you may want to use the team for multiple projects. We will use `<team-name>` as the name of the team in the following sections. You should replace `<team-name>` with the name you pick.
+We use [pre-commit](https://pre-commit.com/) to manage the pre-commit hooks. You can use the following command to install the pre-commit hooks.
+
+```bash
+pre-commit install
+```
+
+Generally, most of the pre-commit hooks will not bother you, but the [commitizen](https://github.com/commitizen-tools/commitizen) hook requires your commit message to follow the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) style, which may lead to more work. We recommend you use the [Commit Message Editor](https://marketplace.visualstudio.com/items?itemName=adam-bender.commit-message-editor) extension of [vscode](https://code.visualstudio.com/) to generate the commit message following the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) style. If you are not using [vscode](https://code.visualstudio.com/), you can `cz commit` to commit your changes. It will guide you to write the commit message in the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) style.
+
+Although requiring your commit message to follow the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) style may lead to more work, we will get git history with more meaningful commit messages, which is helpful when you want to find or roll your code to a previous version, and also it will facilitate the version management tools. The version of the project will be generated from the commit messages following the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) style automatically. For more details, you can refer to the [Version, Tag and Release](https://lightning-template.readthedocs.io/en/latest/get_started/contribution.html#version-tag-and-release) section of the [Contribution doc](https://lightning-template.readthedocs.io/en/latest/get_started/contribution.html#) of [lightning-template](https://github.com/shenmishajing/lightning_template).
 
 ### Change the name of the project
 
@@ -134,27 +148,22 @@ git push
 
 You should see the first commits on your GitHub repository now.
 
-### Set up the pre-commit hooks
-
-We recommend you install the pre-commit hooks to improve the quality of your code and commit message. The pre-commit hooks can check your code before you commit it, which will ensure the styles of your code and commit message follow the rules you set. The pre-commit hooks can also fix some problems automatically, which will save you time. However, if you are unfamiliar with them, you may need to spend some time dealing with problems brought by them.
-
-We use [pre-commit](https://pre-commit.com/) to manage the pre-commit hooks. You can use the following command to install the pre-commit hooks.
-
-```bash
-pre-commit install
-```
-
-Generally, most of the pre-commit hooks will not bother you, but the [commitizen](https://github.com/commitizen-tools/commitizen) hook requires your commit message to follow the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) style, which may lead to more work. We recommend you use the [Commit Message Editor](https://marketplace.visualstudio.com/items?itemName=adam-bender.commit-message-editor) extension of [vscode](https://code.visualstudio.com/) to generate the commit message following the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) style. If you are not using [vscode](https://code.visualstudio.com/), you can `cz commit` to commit your changes. It will guide you to write the commit message in the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) style.
-
-Although requiring your commit message to follow the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) style may lead to more work, we will get git history with more meaningful commit messages, which is helpful when you want to find or roll your code to a previous version, and also it will facilitate the version management tools. The version of the project will be generated from the commit messages following the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) style automatically. For more details, you can refer to the [Version, Tag and Release](https://lightning-template.readthedocs.io/en/latest/get_started/contribution.html#version-tag-and-release) section of the [Contribution doc](https://lightning-template.readthedocs.io/en/latest/get_started/contribution.html#) of [lightning-template](https://github.com/shenmishajing/lightning_template).
-
 ## Development
 
 Refer to the [Usage doc](https://lightning-template.readthedocs.io/en/latest/get_started/usage.html#) of [lightning-template](https://github.com/shenmishajing/lightning_template) for more details about how to implement your models and datasets etc.
 
 ## Experiment
 
-You can use similar commands as the toy project to train, evaluate and predict with your model.
+You can use similar commands as the toy project to search hyperparameters and train, evaluate and predict with your model.
+
+### Hyperparameter search
+
+You have to refer the sweep files in `configs/sweeps` to create a new sweep file for your project. You can also refer to the [wandb doc](https://docs.wandb.ai/guides/sweeps/define-sweep-configuration) for more details about the wandb sweep. After that, you can use the similar commands to init an wandb sweep and start the hyperparameter search as the toy project.
+
+```bash
+wandb sweep --project <project-name> configs/sweeps/path/to/sweeps/config.yaml
+CUDA_VISIBLE_DEVICES=<gpu_ids> wandb agent <sweep_id>
+```
 
 ### Train your model
 
