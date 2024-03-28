@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.2 (2024-03-28)
+
+### Fix
+
+- **configure_model**: use build_model hook instead
+
 ## 1.4.1 (2024-03-06)
 
 ### Refactor
