@@ -35,5 +35,5 @@ trainer:
       - - 0
         - init_args:
             monitor: val/ROC_1
-            filename: "epoch:{epoch}-val_f1:{val/F1_1:.4g}-val_ap:{val/AP_1:.4g}-val_roc:{val/ROC_1:.4g}.ckpt"
+            filename: "epoch:{epoch}-val_f1:{val/F1_1:.4g}-val_ap:{val/AP_1:.4g}-val_roc:{val/ROC_1:.4g}"
             mode: max
