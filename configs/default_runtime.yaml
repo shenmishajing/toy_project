@@ -16,7 +16,7 @@ trainer:
         monitor: val/loss
         filename: "epoch:{epoch}-val_loss:{val/loss:.4g}"
         save_top_k: 3
-        save_last: true
+        save_last: link
         save_best: true
         mode: min
         auto_insert_metric_name: false

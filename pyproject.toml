@@ -11,7 +11,7 @@ readme = "README.md"
 license = { text = "MIT License" }
 requires-python = ">=3.8"
 dependencies = [
-    "lightning-template[deps]>=1.10",
+    "lightning-template[deps]>=1.10.1",
     "speed-benchmark",
     "shell-command-launcher",
 ]
