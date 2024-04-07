@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.5.0 (2024-04-07)
+
+### Feat
+
+- **model_checkpoint**: use link for last checkpoint
+
+### Fix
+
+- **model_checkpoint**: fix model_checkpoint .ckpt name bug
+
 ## 1.4.2 (2024-03-28)
 
 ### Fix
