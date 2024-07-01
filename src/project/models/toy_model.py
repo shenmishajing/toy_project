@@ -40,18 +40,17 @@ class ToyModel(LightningModule):
             "metric_dict": {"preds": preds, "target": batch["label"]},
         }
 
-    def predict_forward(self, batch, *args, **kwargs):
+    def predict_forward_dependency(self, batch, *args, **kwargs):
         return {"preds": self.fcs(batch["data"]).squeeze()}
+
+    def predict_confusion_matrix_start(self, *args, **kwargs):
+        return {"dependency": ["forward"], "result": []}
 
     def predict_confusion_matrix(self, batch, *args, output_path, preds, **kwargs):
         self.confusion_matrix.update(preds, batch["label"])
         fig, _ = self.confusion_matrix.plot()
         fig.savefig(os.path.join(output_path, f"{batch['index'][0]}.png"))
 
-    def on_predict_end(self) -> None:
-        super().on_predict_end()
-        if "confusion_matrix" in self.predict_tasks:
-            fig, _ = self.confusion_matrix.plot()
-            fig.savefig(
-                os.path.join(self.predict_path, "confusion_matrix/confusion_matrix.png")
-            )
+    def predict_confusion_matrix_end(self, output_path, *args, **kwargs) -> None:
+        fig, _ = self.confusion_matrix.plot()
+        fig.savefig(os.path.join(output_path, "confusion_matrix/confusion_matrix.png"))
