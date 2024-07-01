@@ -46,8 +46,8 @@ class ToyModel(LightningModule):
     def predict_confusion_matrix_start(self, *args, **kwargs):
         return {"dependency": ["forward"], "result": []}
 
-    def predict_confusion_matrix(self, batch, *args, output_path, preds, **kwargs):
-        self.confusion_matrix.update(preds, batch["label"])
+    def predict_confusion_matrix(self, batch, *args, output_path, forward, **kwargs):
+        self.confusion_matrix.update(forward["preds"], batch["label"])
         fig, _ = self.confusion_matrix.plot()
         fig.savefig(os.path.join(output_path, f"{batch['index'][0]}.png"))
 
